@@ -10,4 +10,4 @@ sudo apt update && echo "Обновили индексы пакетов apt" \
 && sudo apt install docker-ce -y && echo "Установили Докер" \
 && sudo systemctl status docker && echo "Проверили статус Докера в системе"\
 && echo "Начинаем установку Docker Compose" \
-&& git clone https://github.com/docker/compose.git && echo "Ура, дело сделано"
+&& git clone https://github.com/docker/compose.git && echo "Урaа, дело сделано"
