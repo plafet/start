@@ -83,3 +83,9 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 # 18. Check the nodes
 # kubectl get nodes -o wide
+
+# необходимо создать конфиг .kube в хоум каталоге пользователя и скопировать туда админский конфиг. Также необходимо назначить права на этот файл
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
