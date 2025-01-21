@@ -1,3 +1,4 @@
+#!/bin/bash
 # Installation of kubeadm cluster on Ubuntu 22.04 that I personally use on my ubuntu VPS machines to deploy pods via github actions
 
 # 1. Disable swap:
@@ -21,7 +22,7 @@ sudo modprobe br_netfilter
 
 # проверим активацию сетевых модулей
 lsmod  egrep "br_netfilteroverlay"
-echo "Если напротив значений overlay и br_netfilter во втором столбце присутствует цифра 0, то модули успешно активированы"
+echo "Если напротив значений overlay и br_netfilter во втором столбце присутствует цифра 0, то модули успешно активированы."
 
 # Create another config file for sysctl Так как большинство сетевых плагинов (CNI) в Kubernetes используют встроенный в ядро Linux firewall под названием Iptables, а также маршрутизируют трафик через сетевой мост (bridge), нам необходимо активировать соответствующие сетевые параметры, которые отвечают за маршрутизацию трафика через сетевой мост. Для этого выполняем команду
 sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
@@ -74,19 +75,24 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # 14. Install the Tigera Calico operator and custom resource definitions
-#kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/tigera-operator.yaml
 
 # 15. Install Calico by creating the necessary custom resource. For more information on configuration options available in this manifest
-#kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/custom-resources.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/custom-resources.yaml -O
 
-# 16. Check the status of the cluster
-# kubectl get pods -n calico-system
+# 16. Create the manifest to install Calico
+kubectl create -f custom-resources.yaml
 
-# 17. Remove the taints on the control plane so that you can schedule pods on it
-#kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+# 17. Check the status of the cluster
+kubectl get pods -n calico-system
+echo "если видим имя пода и статус RUNNING значит все ок"
 
-# 18. Check the nodes
-# kubectl get nodes -o wide
+
+# 18. Remove the taints on the control plane so that you can schedule pods on it
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+
+# 19. Check the nodes
+kubectl get nodes -o wide
 
 # необходимо создать конфиг .kube в хоум каталоге пользователя и скопировать туда админский конфиг. Также необходимо назначить права на этот файл
 #mkdir -p $HOME/.kube

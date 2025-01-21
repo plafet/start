@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sudo apt install -y apt-transport-https ca-certificates curl gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+sudo tee /etc/modules-load.d/containerd.conf <<EOF
+overlay
+br_netfilter
+EOF
+sudo modprobe overlay
+sudo modprobe br_netfilter
+sudo apt install containerd
+sudo lsmod
+echo "ищем нолики 0 напротив br_netfilter и overlay"
+sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOF
+sudo systemctl restart kubelet.service
+systemctl status kubelet.service
+echo "если kubelet все еще выебывается то смотрим его логи sudo journalctl -u kubelet и если видим там ошибку с сертификатом то смотрим где лежит этот сертификат и удаляем этот файл (в прошлый раз он лежал /etc/kubernetes/pki/ca.crt) и потом снова перезапускаем sudo systemctl restart kubelet.service"
+sudo kubeadm join 192.168.0.106:6443 --token itl0g1.dlsu3w4nujqg7rsh         --discovery-token-ca-cert-hash sha256:b63499ac8a4f7004dfeec0cd70c1c031fc630df4e95b28fd99cefe5c6719a5a3
