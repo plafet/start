@@ -8,6 +8,6 @@ sudo apt update && echo "Обновили индексы пакетов apt" \
 && sudo apt update && echo "Еще раз обновили индексы пакетов"\
 && apt-cache policy docker-ce && echo "Проверили из какого репозитория будет выполнятся установка Докера" \
 && sudo apt install docker-ce -y && echo "Установили Докер" \
-&& sudo systemctl status docker && echo "Проверили статус Докера в системе"\
+&& sudo docker -v && echo "Проверили версию Докера в системе"\
 && echo "Начинаем установку Docker Compose" \
-&& git clone https://github.com/docker/compose.git && echo "Урaа, дело сделано"
+&& git clone https://github.com/docker/compose.git && docker compose version && echo "Если видим версия компосе, значит он успешно встал"
