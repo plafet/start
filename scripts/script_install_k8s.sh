@@ -76,7 +76,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 #Так как master-нода имеет по умолчанию метку NoSchedule, которая не позволяет запускать Pod'ы без этой метки, что помешает нам в развёртке дальнейших DaemonSet'ов, поэтому уберём метку с ноды.
 # kubectl get nodes # Узнаем название master ноды
-# kubectl taint nodes <nodename> node-role.kubernetes.io/master:NoSchedule
+# kubectl taint nodes <nodename> node-role.kubernetes.io/master:master-
 
 # 14. Install the Tigera Calico operator and custom resource definitions
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.1/manifests/tigera-operator.yaml
