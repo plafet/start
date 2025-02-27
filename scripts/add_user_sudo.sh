@@ -14,4 +14,4 @@ sudo usermod -aG sudo $user
 sudo touch /etc/sudoers.d/$user
 
 
-sudo echo "'$user' ALL=(ALL) NOPASSWD:ALL" /etc/sudoers.d/$user
+sudo echo "'$user' ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
