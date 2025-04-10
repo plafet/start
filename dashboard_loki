@@ -1,0 +1,517 @@
+
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 63,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "beie0iufp9szkd"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 20,
+        "w": 22,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{job=\"$job\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{component=\"$component\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{container=\"$container\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{filename=\"$filename\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{instance=\"$instance\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{app=\"$app\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{namespace=\"$namespace\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{node_name=\"$node_name\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "H"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{pod=\"$pod\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "I"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{service_name=\"$service_name\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "J"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "beie0iufp9szkd"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{stream=\"$stream\"} |= `$filter`",
+          "hide": false,
+          "queryType": "range",
+          "refId": "K"
+        }
+      ],
+      "title": "Raw logs",
+      "type": "logs"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": [
+            "alertmanager"
+          ],
+          "value": [
+            "alertmanager"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "app",
+        "options": [],
+        "query": {
+          "label": "app",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": [
+            "canary"
+          ],
+          "value": [
+            "canary"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "component",
+        "options": [],
+        "query": {
+          "label": "component",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "container",
+        "options": [],
+        "query": {
+          "label": "container",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "filename",
+        "options": [],
+        "query": {
+          "label": "filename",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "label": "instance",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": [
+            "kube-flannel/flannel"
+          ],
+          "value": [
+            "kube-flannel/flannel"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "job",
+        "options": [],
+        "query": {
+          "label": "job",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "label": "namespace",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "node_name",
+        "options": [],
+        "query": {
+          "label": "node_name",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "pod",
+        "options": [],
+        "query": {
+          "label": "pod",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "service_name",
+        "options": [],
+        "query": {
+          "label": "service_name",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "beie0iufp9szkd"
+        },
+        "definition": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "stream",
+        "options": [],
+        "query": {
+          "label": "stream",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "error",
+          "value": "error"
+        },
+        "name": "filter",
+        "options": [
+          {
+            "selected": true,
+            "text": "error",
+            "value": "error"
+          }
+        ],
+        "query": "error",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Loki",
+  "uid": "ceie6uqcduha8c",
+  "version": 9,
+  "weekStart": ""
+}
